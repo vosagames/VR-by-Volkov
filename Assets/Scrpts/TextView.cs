@@ -5,6 +5,10 @@ public class TextView : MonoBehaviour
     [SerializeField] private Transform playerCamera;
     [SerializeField] private Animator textAnimator;
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
     private void Update()
     {
         transform.LookAt(playerCamera);

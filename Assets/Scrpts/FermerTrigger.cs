@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -8,6 +9,9 @@ public class FermerTrigger : MonoBehaviour
 
     private bool isTrigger = false;
 
+    public Action isTalk;
+    public Action isExit;
+
     private void Start()
     {
         input.action.started += TalkFermer;
@@ -16,7 +20,8 @@ public class FermerTrigger : MonoBehaviour
     {
         if(isTrigger != false)
         {
-
+            hintText.GetComponent<TextView>().OnHide();
+            isTalk?.Invoke();
         }
     }
     private void OnTriggerEnter(Collider other)
@@ -32,6 +37,7 @@ public class FermerTrigger : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            isExit?.Invoke();
             isTrigger = false;
             hintText.GetComponent<TextView>().OnHide();
         }

@@ -13,6 +13,5 @@ public class Morkovka : MonoBehaviour
     public void IsDrop()
     {
         rb.isKinematic = false;
-        interactable.movementType = XRBaseInteractable.MovementType.VelocityTracking;
     }
 }
